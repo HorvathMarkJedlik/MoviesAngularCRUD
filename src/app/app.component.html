@@ -1,8 +1,11 @@
 <div class="container my-5">
     <h1 class="text-center mb-4 text-primary">🎥 Film Regisztráció</h1>
     <div class="card shadow-lg border-0">
-        <div class="card-header bg-primary text-white text-center">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h4 class="mb-0">Filmek Listája</h4>
+            <button (click)="newReg()" class="btn btn-light text-primary fw-bold">
+                Új Film Hozzáadása &#10010;
+            </button>
         </div>
         <div class="card-body p-4">
             <table class="table table-hover table-bordered table-striped align-middle">
@@ -19,9 +22,9 @@
                     @for (m of movies; track $index) {
                         <tr>
                             <td class="text-center">
-                                <span style="color: orange; font-size: 30px; cursor: pointer;">&#9998;</span>
-                                <span>-</span>
-                                <span style="color: red; font-size: 25px; cursor: pointer;">&#10008;</span>
+                                <span (click)="modifyReg(m)" style="color: orange; font-size: 30px; cursor: pointer;">&#9998;</span>
+                                <span style="cursor: default;">-</span>
+                                <span (click)="deleteReg(m)" style="color: red; font-size: 25px; cursor: pointer;">&#10008;</span>
                             </td>
                             <td class="fw-bold text-primary">{{m.title}}</td>
                             <td class="text-secondary">{{m.director}}</td>
@@ -36,3 +39,5 @@
         </div>
     </div>
 </div>
+
+<app-registration [model]="modify"></app-registration>

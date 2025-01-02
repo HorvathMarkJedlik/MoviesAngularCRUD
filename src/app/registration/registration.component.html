@@ -1,0 +1,38 @@
+@if (model) {
+  <div class="modal" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Film Adatok Módosítása</h5>
+          <button type="button" class="btn-close" (click)="model = undefined"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="movieTitle" class="form-label">Film címe</label>
+              <input type="text" class="form-control" id="movieTitle" [value]="model.title" (change)="model.title = getValue($event)" >
+            </div>
+            <div class="mb-3">
+              <label for="movieDirector" class="form-label">Film rendezője</label>
+              <input type="text" class="form-control" id="movieDirector" [value]="model.director" (change)="model.director = getValue($event)">
+            </div>
+            <div class="mb-3">
+              <label for="movieRating" class="form-label">Értékelés (1-10)</label>
+              <input type="number" class="form-control" id="movieRating" [value]="model.rating" min="1" max="10" (change)="model.rating = getNumberValue($event)">
+            </div>
+            <div class="mb-3">
+              <label for="movieReleaseYear" class="form-label">Megjelenési év</label>
+              <input type="number" class="form-control" id="movieReleaseYear" [value]="model.release_year" (change)="model.release_year = getNumberValue($event)">
+            </div>
+            <div class="mb-3 text-center">
+              <button type="button" class="btn btn-primary w-100">Mentés</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button (click)="model = undefined" type="button" class="btn btn-danger">Mégsem</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
