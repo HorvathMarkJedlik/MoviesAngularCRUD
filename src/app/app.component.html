@@ -40,4 +40,4 @@
     </div>
 </div>
 
-<app-registration [model]="modify"></app-registration>
+<app-registration [model]="modify" (saved)="saveModify($event)"></app-registration>

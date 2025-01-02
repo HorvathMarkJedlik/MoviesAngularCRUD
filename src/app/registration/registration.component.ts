@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MovieModel } from '../models/movie-model';
 
 @Component({
@@ -10,6 +10,7 @@ import { MovieModel } from '../models/movie-model';
 })
 export class RegistrationComponent {
   @Input() model: MovieModel | undefined = undefined;
+  @Output() saved = new EventEmitter<MovieModel>();
 
   getValue(event: any): string {
     return event.target.value;
@@ -17,5 +18,9 @@ export class RegistrationComponent {
 
   getNumberValue(event: any): number {
     return Number(event.target.value) ;
+  }
+
+  save(){
+    this.saved.emit(this.model);
   }
 }

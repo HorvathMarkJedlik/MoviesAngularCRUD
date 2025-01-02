@@ -25,7 +25,7 @@
               <input type="number" class="form-control" id="movieReleaseYear" [value]="model.release_year" (change)="model.release_year = getNumberValue($event)">
             </div>
             <div class="mb-3 text-center">
-              <button type="button" class="btn btn-primary w-100">Mentés</button>
+              <button (click)="save()" type="button" class="btn btn-primary w-100">Mentés</button>
             </div>
           </form>
         </div>

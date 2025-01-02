@@ -36,7 +36,20 @@ export class AppComponent {
     this.modify = JSON.parse(JSON.stringify(m));
   }
 
+  saveModify(m: MovieModel){
+    this.dataService.modifyMovie(m).subscribe({
+      next: (data: MovieModel) => {
+        const index = this.movies.findIndex(m => m.id == data.id);
+        this.movies[index] = data;
+        this.modify = undefined;
+      },
+
+      error: (err) => console.log(err)
+    });
+  }
+
   deleteReg(m: MovieModel) {
 
   }
+
 }
