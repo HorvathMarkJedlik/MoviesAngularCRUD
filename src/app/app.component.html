@@ -8,6 +8,7 @@
             <table class="table table-hover table-bordered table-striped align-middle">
                 <thead class="table-dark text-center">
                     <tr>
+                        <th>Szerkesztés / Törlés</th>
                         <th>Film címe</th>
                         <th>Film rendezője</th>
                         <th>Film értékelése</th>
@@ -17,15 +18,17 @@
                 <tbody>
                     @for (m of movies; track $index) {
                         <tr>
-                          <td class="text-center">
-                            <span style="color: orange; font-size: 30px;">&#9998;</span>
-                            <span style="cursor: default;">--</span>
-                            <span style="color: red; font-size: 25px;">&#10008;</span>
-                          </td>
-                            <td>{{m.title}}</td>
-                            <td>{{m.director}}</td>
-                            <td>{{m.rating}}/10</td>
-                            <td>{{m.release_year}}</td>
+                            <td class="text-center">
+                                <span style="color: orange; font-size: 30px; cursor: pointer;">&#9998;</span>
+                                <span>-</span>
+                                <span style="color: red; font-size: 25px; cursor: pointer;">&#10008;</span>
+                            </td>
+                            <td class="fw-bold text-primary">{{m.title}}</td>
+                            <td class="text-secondary">{{m.director}}</td>
+                            <td>
+                                <span class="badge bg-success text-white text-center">{{m.rating}}/10</span>
+                            </td>
+                            <td class="text-muted">{{m.release_year}}</td>
                         </tr>
                     }
                 </tbody>
