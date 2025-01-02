@@ -68,5 +68,15 @@ export class AppComponent {
     });
   }
 
-  deleteReg(m: MovieModel) {}
+  deleteReg(m: MovieModel) {
+        this.dataService.deleteMovie(m).subscribe({
+          next: (data: MovieModel) => {
+            const index = this.movies.findIndex((m) => m.id == data.id);
+            this.movies.splice(index, 1);
+            this.modify = undefined;
+          },
+
+          error: (err) => console.log(err),
+        });
+  }
 }
